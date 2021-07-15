@@ -17,4 +17,4 @@ spec:
   source:
     path: manifests
     repoURL: https://github.com/jzr1991/gatsby-simple-container
-    targetRevision: develop
+    targetRevision: HEAD
