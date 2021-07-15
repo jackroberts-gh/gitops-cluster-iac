@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook
+  namespace: poprocks
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: poprocks
+    server: https://kubernetes.default.svc
+  project: default
+  syncPolicy:
+    automated: 
+      prune: true 
+      selfHeal: true 
+      allowEmpty: false 
+    retry:
+      limit: 3 
+      backoff:
+        duration: 10s 
+        factor: 2 
+        maxDuration: 3m 
+  source:
+    path: manifests
+    repoURL: https://github.com/jzr1991/gatsby-simple-container
+    targetRevision: develop
