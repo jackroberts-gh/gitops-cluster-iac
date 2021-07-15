@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: gatsby-appsby
-  namespace: poprocks
+  namespace: finestorm
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
