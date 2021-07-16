@@ -1,21 +1,21 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: gatsby-appsby
-#   namespace: argocd
-#   finalizers:
-#   - resources-finalizer.argocd.argoproj.io
-# spec:
-#   destination:
-#     server: https://kubernetes.default.svc
-#   project: default
-#   syncPolicy:
-#     automated: 
-#       prune: true 
-#       selfHeal: true 
-#   source:
-#     path: manifests
-#     repoURL: https://github.com/jzr1991/gatsby-simple-container
-#     targetRevision: HEAD
-#     # directory:
-#     #   recurse: true
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gatsby-appsby
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: topknots
+  syncPolicy:
+    automated: 
+      prune: true 
+      selfHeal: true 
+  source:
+    path: manifests
+    repoURL: https://github.com/jzr1991/gatsby-simple-container
+    targetRevision: HEAD
+    # directory:
+    #   recurse: true
