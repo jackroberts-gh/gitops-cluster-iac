@@ -13,9 +13,9 @@ spec:
 
   destinations:
   - namespace: topknots
-    server: https://kubernetes.default.svc
+    server: '*'
   - namespace: topknots-dev
-    server: https://kubernetes.default.svc
+    server: '*'
 
   clusterResourceWhitelist:
   - group: ''
