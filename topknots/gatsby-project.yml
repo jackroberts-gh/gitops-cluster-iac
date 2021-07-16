@@ -1,0 +1,56 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: topknots
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Topknots test project
+
+  sourceRepos:
+  - '*'
+
+  destinations:
+  - namespace: topknots
+    server: https://kubernetes.default.svc
+  - namespace: topknots-dev
+    server: https://kubernetes.default.svc
+
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+
+  namespaceResourceBlacklist:
+  - group: ''
+    kind: ResourceQuota
+  - group: ''
+    kind: LimitRange
+  - group: ''
+    kind: NetworkPolicy
+
+  namespaceResourceWhitelist:
+  - group: 'apps'
+    kind: Deployment
+  - group: 'apps'
+    kind: StatefulSet
+  - group: ''
+    kind: Service
+  - group: 'networking.k8s.io'
+    kind: Ingress
+
+  orphanedResources:
+    warn: false
+
+  roles:
+  - name: read-only
+    description: Read-only privileges to topknots
+    policies:
+    - p, proj:topknots:read-only, applications, get, topknots/*, allow
+    groups:
+    - my-oidc-group
+
+  - name: ci-role
+    description: Sync privileges for guestbook-dev
+    policies:
+    - p, proj:topknots:ci-role, applications, sync, topknots/guestbook-dev, allow
