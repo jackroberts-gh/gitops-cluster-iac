@@ -7,7 +7,7 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: topknots
+    namespace: topknots-dev
     server: https://kubernetes.default.svc
   project: default
   syncPolicy:
@@ -15,7 +15,7 @@ spec:
       prune: true 
       selfHeal: true 
   source:
-    path: manifests/prod
+    path: manifests/dev
     repoURL: https://github.com/jzr1991/gatsby-simple-container
     targetRevision: HEAD
     # directory:

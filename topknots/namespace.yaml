@@ -4,3 +4,10 @@ metadata:
   name: topknots
   labels:
     type: team
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: topknots-dev
+  labels:
+    type: team
