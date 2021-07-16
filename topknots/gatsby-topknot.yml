@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: topknots-dev
+    namespace: topknots
   project: topknots
   syncPolicy:
     automated: 
