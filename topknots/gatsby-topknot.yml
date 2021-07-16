@@ -15,8 +15,8 @@ spec:
       prune: true 
       selfHeal: true 
   source:
-    path: manifests
-    repoURL: https://github.com/jzr1991/gatsby-simple-container
+    path: gatsby-app
+    repoURL: https://github.com/jzr1991/gatsby-simple-container-config
     targetRevision: HEAD
     # directory:
     #   recurse: true
